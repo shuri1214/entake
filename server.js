@@ -87,8 +87,11 @@ fastify.post("/switch", function(request, reply) {
   
   // params is an object we'll pass to our handlebars template
   let params = { seo: seo ,"post": request.body};
-    
+  
+  let query = `INSERT INTO posted (name, posttime)　VALUES($name, $posttime)`;
   db.serialize(() => {
+    db.run(query,{$name : request.body.icon , $posttime });
+    
   db.get("select * from tb001", (err, row) => {
         if (err) {
             console.error(err.message);
