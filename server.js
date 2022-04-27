@@ -94,8 +94,8 @@ fastify.post("/switch", function(request, reply) {
     var datestr = date.getFullYear().tostring() + (date.getMonth() + 1) + date.getDate() 
                     + date.getHours() + date.getMinutes()+ date.getSeconds();
     var binds = {$name : request.body.icon , $posttime : datestr };
-    var preins = db.prepare("Insert into posted (name,posttime) values(?,?)");
-    preins.run([request.body.icon,datestr]);
+    var preins = db.prepare("Insert into posted (name,posttime) values(?,datetime())");
+    preins.run([request.body.icon]);
     
     preins.finalize();
 //    db.run(query,{$name : request.body.icon , $posttime : "datestr" });
