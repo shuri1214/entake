@@ -82,6 +82,17 @@ fastify.get("/switch", function(request, reply) {
 *
 * Accepts body data indicating the user choice
 */
+fastify.post("/switch", function(request, reply) {
+  
+  // params is an object we'll pass to our handlebars template
+  let params = { seo: seo ,"post": request.body};
+    
+  // The Handlebars code will be able to access the parameter values and build them into the page
+  reply.view("/src/pages/buttons.hbs", params);
+  
+});
+
+
 fastify.post("/", function(request, reply) {
   
   // Build the params object to pass to the template
@@ -122,6 +133,7 @@ fastify.post("/", function(request, reply) {
   // The Handlebars template will use the parameter values to update the page with the chosen color
   reply.view("/src/pages/index.hbs", params);
 });
+
 
 // Run the server and report out to the logs
 fastify.listen(process.env.PORT, '0.0.0.0', function(err, address) {
