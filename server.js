@@ -71,7 +71,10 @@ fastify.get("/switch", function(request, reply) {
   
   // params is an object we'll pass to our handlebars template
   let params = { seo: seo,"post":{}};
-    
+  
+  // obsolete data clean
+  db.run("delete from posted where posttime < strftime('%Y%m%d%H%M%S')-600");
+  
   // The Handlebars code will be able to access the parameter values and build them into the page
   reply.view("/src/pages/buttons.hbs", params);
 });
@@ -89,7 +92,7 @@ fastify.post("/switch", function(request, reply) {
   let params = { seo: seo ,"post": request.body};
   
   db.serialize(() => {
-    var preins = db.prepare("Insert into posted (name,posttime) values(?,strftime('%Y%m%d%H%M%S')");
+    var preins = db.prepare("Insert into posted (name,posttime) values(?,strftime('%Y%m%d%H%M%S'))");
     preins.run([request.body.icon]);
     preins.finalize();
     
