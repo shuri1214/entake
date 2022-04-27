@@ -88,7 +88,6 @@ fastify.post("/switch", function(request, reply) {
   // params is an object we'll pass to our handlebars template
   let params = { seo: seo ,"post": request.body};
   
-  /*
   let query = `INSERT INTO posted (name, posttime)　VALUES($name, $posttime)`;
   db.serialize(() => {
     var date = new Date();
@@ -100,7 +99,6 @@ fastify.post("/switch", function(request, reply) {
     db.run(query,{$name : request.body.icon , $posttime : datestr });
     
   })
-  */
   
   // The Handlebars code will be able to access the parameter values and build them into the page
   reply.view("/src/pages/buttons.hbs", params);
