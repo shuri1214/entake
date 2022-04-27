@@ -12,7 +12,8 @@ const fastify = require("fastify")({
 });
 
 // ADD FAVORITES ARRAY VARIABLE FROM TODO HERE
-
+const sqlite3 = require("sqlite3");
+const db = new sqlite3.Database("./dbs/icons.db");
 
 // Setup our static files
 fastify.register(require("fastify-static"), {
@@ -87,6 +88,16 @@ fastify.post("/switch", function(request, reply) {
   // params is an object we'll pass to our handlebars template
   let params = { seo: seo ,"post": request.body};
     
+  db.serialize(() => {
+  db.get("select * from tb001", (err, row) => {
+        if (err) {
+            console.error(err.message);
+        }
+        console.log("######");
+        console.log(`${row.title} : ${row.content}`);
+    });
+})
+  
   // The Handlebars code will be able to access the parameter values and build them into the page
   reply.view("/src/pages/buttons.hbs", params);
   
