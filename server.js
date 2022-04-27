@@ -69,7 +69,7 @@ fastify.get("/", function(request, reply) {
 fastify.get("/switch", function(request, reply) {
   
   // params is an object we'll pass to our handlebars template
-  let params = { seo: seo };
+  let params = { seo: seo,"post":{}};
     
   // The Handlebars code will be able to access the parameter values and build them into the page
   reply.view("/src/pages/buttons.hbs", params);
