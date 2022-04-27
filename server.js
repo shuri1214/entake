@@ -88,15 +88,17 @@ fastify.post("/switch", function(request, reply) {
   // params is an object we'll pass to our handlebars template
   let params = { seo: seo ,"post": request.body};
   
-  let query = `INSERT INTO posted (name, posttime)　VALUES($name, $posttime)`;
+  //let query = `INSERT INTO posted (name, posttime)　VALUES($name, $posttime)`;
   db.serialize(() => {
     var date = new Date();
-    var datestr = date.getFullYear()+ (date.getMonth() + 1) + date.getDate() 
+    var datestr = date.getFullYear().tostring() + (date.getMonth() + 1) + date.getDate() 
                     + date.getHours() + date.getMinutes()+ date.getSeconds();
-    //datestr = date.format('yyyymmddhhMMss');
     var binds = {$name : request.body.icon , $posttime : datestr };
-    var preins = db.prepare("I");
-    db.run(query,{$name : request.body.icon , $posttime : "datestr" });
+    var preins = db.prepare("Insert into posted (name,posttime) values(?,?)");
+    preins.run([request.body.icon,datestr]);
+    
+    preins.finalize();
+//    db.run(query,{$name : request.body.icon , $posttime : "datestr" });
     
   })
   
