@@ -91,12 +91,12 @@ fastify.post("/switch", function(request, reply) {
   let query = `INSERT INTO posted (name, posttime)　VALUES($name, $posttime)`;
   db.serialize(() => {
     var date = new Date();
-    var datestr = date.getFullYear()+ ('0' + (date.getMonth() + 1)).slice(-2) 
-                    ('0' + date.getDate()).slice(-2) 
-                  + ('0' + date.getHours()).slice(-2) 
-                  + ('0' + date.getMinutes()).slice(-2) 
-                  + ('0' + date.getSeconds()).slice(-2) ;
-    db.run(query,{$name : request.body.icon , $posttime : datestr });
+    var datestr = date.getFullYear()+ (date.getMonth() + 1) + date.getDate() 
+                    + date.getHours() + date.getMinutes()+ date.getSeconds();
+    //datestr = date.format('yyyymmddhhMMss');
+    var binds = {$name : request.body.icon , $posttime : datestr };
+    var preins = db.prepare("I");
+    db.run(query,{$name : request.body.icon , $posttime : "datestr" });
     
   })
   
