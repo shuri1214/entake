@@ -88,18 +88,19 @@ fastify.post("/switch", function(request, reply) {
   // params is an object we'll pass to our handlebars template
   let params = { seo: seo ,"post": request.body};
   
+  /*
   let query = `INSERT INTO posted (name, posttime)　VALUES($name, $posttime)`;
   db.serialize(() => {
-    db.run(query,{$name : request.body.icon , $posttime });
+    var date = new Date();
+    var datestr = date.getFullYear()+ ('0' + (date.getMonth() + 1)).slice(-2) 
+                    ('0' + date.getDate()).slice(-2) 
+                  + ('0' + date.getHours()).slice(-2) 
+                  + ('0' + date.getMinutes()).slice(-2) 
+                  + ('0' + date.getSeconds()).slice(-2) ;
+    db.run(query,{$name : request.body.icon , $posttime : datestr });
     
-  db.get("select * from tb001", (err, row) => {
-        if (err) {
-            console.error(err.message);
-        }
-        console.log("######");
-        console.log(`${row.title} : ${row.content}`);
-    });
-})
+  })
+  */
   
   // The Handlebars code will be able to access the parameter values and build them into the page
   reply.view("/src/pages/buttons.hbs", params);
