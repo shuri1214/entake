@@ -11,8 +11,6 @@
     <!-- Compressed CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation.min.css" crossorigin="anonymous">
 
-
-
     <style type="text/css">
       <!--
       body{background-color:#00ff00;}
@@ -53,6 +51,12 @@
             $('i').fadeOut(3000);
             $('i').fadeIn(6000);
           },6000);
+          let url="https://entake.glitch.me/nigiyaka"
+          $.get(url,"test=001",null,"json")
+            .done(function(ret,textStatus,jqXHR){
+                
+              }
+            );
         });
       });
     </script>
