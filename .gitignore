@@ -4,4 +4,4 @@ node_modules
 icons.db
 .sqlite_history
 colors.json
-seo.json
+# seo.json

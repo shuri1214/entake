@@ -46,7 +46,8 @@
           setInterval(function(){
             $.get(url,'test=001',null,'json')
               .done(function(ret,ts,jqXHR){
-                  key= ret["code"];
+                  key = ret["code"];
+                  $('.tmp').text(key);
                   $('i').attr('class',"fa fa-solid " + ret["test"]);
                   $('i').fadeIn(2000,function(){
                     $('i').fadeOut(2000);
@@ -61,7 +62,7 @@
         <div class="grid-container fluid text-center">
           <div class="grid-x grid-padding-x icon">
             <div class="cell small-3 medium-3 large-3">
-              <i class=""></i>
+              <i class=""></i><span class="tmp"></span>
             </div>
             <div class="cell small-3 medium-3 large-3">
               <i class=""></i>

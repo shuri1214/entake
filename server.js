@@ -14,6 +14,7 @@ const fastify = require("fastify")({
 // ADD FAVORITES ARRAY VARIABLE FROM TODO HERE
 const sqlite3 = require("sqlite3");
 const db = new sqlite3.Database("./dbs/icons.db");
+const sql = require("./src/sql.json");
 
 // Setup our static files
 fastify.register(require("fastify-static"), {
@@ -104,7 +105,7 @@ fastify.post("/switch", function(request, reply) {
   let params = { seo: seo ,"post": request.body};
   
   db.serialize(() => {
-    var preins = db.prepare("Insert into posted (name,posttime) values(?,strftime('%Y%m%d%H%M%S'))");
+    var preins = db.prepare(sql.insert);
     preins.run([request.body.icon]);
     preins.finalize();
     
