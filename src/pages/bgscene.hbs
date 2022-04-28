@@ -48,8 +48,12 @@
 
     <script>
       $(document).ready(function(){
-        $('i').fadeOut(3000);
-        $('i').fadeIn(6000);
+        $(function(){
+          setInterval(function(){
+            $('i').fadeOut(3000);
+            $('i').fadeIn(6000);
+          },6000);
+        });
       });
     </script>
     

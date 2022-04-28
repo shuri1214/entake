@@ -85,6 +85,12 @@ fastify.get("/bgscene", function(request, reply) {
   reply.view("/src/pages/bgscene.hbs", params);
 });
 
+fastify.get("/nigiyaka", function(request, reply) {
+  reply
+    .code(200)
+    .header("Content-Type","application/json; charset=utf-8")
+    .send({"test":"hoge"});
+});
 
 
 /**
