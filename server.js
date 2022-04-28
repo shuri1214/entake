@@ -93,13 +93,13 @@ fastify.get("/nigiyaka", function(request, reply) {
     var pre = db.prepare(sql.geticon);
     pre.bind([request.body.code]);
     db.get(sql.geticon, (err, rows) => {
-        console.log(JSON.stringify(rows));
+//        console.log(JSON.stringify(rows));
+      reply
+        .code(200)
+        .header("Content-Type","application/json; charset=utf-8")
+        .send({"icon":"fa-ghost","code":"20220430010101"});
     });
   })
-  reply
-    .code(200)
-    .header("Content-Type","application/json; charset=utf-8")
-    .send({"icon":"fa-ghost","code":"20220430010101"});
 });
 
 
