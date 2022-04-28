@@ -48,13 +48,12 @@
               .done(function(ret,ts,jqXHR){
                   key = ret["code"];
                   $('i').attr('class',"fa fa-solid " + ret["icon"]);
-                  $('i').fadeIn(2000,function(){
-                    $('i').fadeOut(2000);
+                  $('i').fadeIn(1500,function(){
+                    $('i').fadeOut(1500);
                   });
-                  
                 }
               );
-          },6000);
+          },3000);
         });
       });
     </script>
