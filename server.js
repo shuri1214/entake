@@ -87,10 +87,19 @@ fastify.get("/bgscene", function(request, reply) {
 });
 
 fastify.get("/nigiyaka", function(request, reply) {
+  
+  db.serialize(() => {
+    
+    var pre = db.prepare(sql.geticon);
+    pre.bind([request.body.code]);
+    db.get(sql.geticon, (err, rows) => {
+        console.log(JSON.stringify(rows));
+    });
+  })
   reply
     .code(200)
     .header("Content-Type","application/json; charset=utf-8")
-    .send({"name":"fa-ghost","code":"20220430010101"});
+    .send({"icon":"fa-ghost","code":"20220430010101"});
 });
 
 

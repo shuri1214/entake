@@ -44,11 +44,11 @@
             let url='https://entake.glitch.me/nigiyaka';
             let key='';
           setInterval(function(){
-            $.get(url,'test=001',null,'json')
+            $.get(url,'code='+ key,null,'json')
               .done(function(ret,ts,jqXHR){
                   key = ret["code"];
                   $('.tmp').text(key);
-                  $('i').attr('class',"fa fa-solid " + ret["name"]);
+                  $('i').attr('class',"fa fa-solid " + ret["icon"]);
                   $('i').fadeIn(2000,function(){
                     $('i').fadeOut(2000);
                   });
