@@ -11,12 +11,7 @@
     <!-- Compressed CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation.min.css" crossorigin="anonymous">
 
-<!-- Compressed JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/js/foundation.min.js" crossorigin="anonymous"></script>
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-      crossorigin="anonymous"></script>
+
 
     <style type="text/css">
       <!--
@@ -43,11 +38,21 @@
         }
       -->
     </style>
-<script>
-      $(document).foundation();
-    </script>
   </head>
   <body>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    
+    <!-- Compressed JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/js/foundation.min.js" crossorigin="anonymous"></script>
+
+    <script>
+      $(document).ready(function(){
+        $('i').fadeOut(3000);
+        $('i').fadeIn(6000);
+      });
+    </script>
+    
     <div class="grid-container">
       <div class="grid-x grid-padding-x align-center icon">
         <div class="cell small-4 medium-4 large-4">
