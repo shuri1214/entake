@@ -90,7 +90,7 @@ fastify.get("/nigiyaka", function(request, reply) {
   reply
     .code(200)
     .header("Content-Type","application/json; charset=utf-8")
-    .send({"test":"fa-ghost","code":"20220430010101"});
+    .send({"name":"fa-ghost","code":"20220430010101"});
 });
 
 

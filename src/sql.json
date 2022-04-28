@@ -1,6 +1,6 @@
 {
   "insert": "Insert into posted (name,posttime) values(?,strftime('%Y%m%d%H%M%S'))",
-  "title": "Entake Button",
+  "select": "Select name as icon,posttime as code from posted where posttime =(select min(posttime) from posted where posttime > '20220428162408');",
   "description": "This is just switching page.",
   "url": "glitch-default",
   "image": "https://cdn.glitch.com/605e2a51-d45f-4d87-a285-9410ad350515%2Fhello-node-social.png?v=1618161394375"

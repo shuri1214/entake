@@ -48,7 +48,7 @@
               .done(function(ret,ts,jqXHR){
                   key = ret["code"];
                   $('.tmp').text(key);
-                  $('i').attr('class',"fa fa-solid " + ret["test"]);
+                  $('i').attr('class',"fa fa-solid " + ret["name"]);
                   $('i').fadeIn(2000,function(){
                     $('i').fadeOut(2000);
                   });
