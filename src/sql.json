@@ -1,6 +1,7 @@
 {
-  "insert": "Insert into posted (name,posttime) values(?,strftime('%Y%m%d%H%M%S'))",
-  "geticon": "Select name as icon,posttime as code from posted where posttime =(select min(posttime) from posted where posttime > ?);",
+  "insert": "insert into posted (name,posttime) values(?,strftime('%Y%m%d%H%M%S'))",
+  "geticon": "select name as icon,posttime as code from posted where posttime =(select min(posttime) from posted where posttime > ?);",
   "delete": "delete from posted where posttime < strftime('%Y%m%d%H%M%S')-180",
-  "deleteimed": "delete from posted where posttime < strftime('%Y%m%d%H%M%S')-30"
+  "deleteimed": "delete from posted where posttime < strftime('%Y%m%d%H%M%S')-30",
+  "userinsert":"insert into user (name,hash) values(?,?)"
 }

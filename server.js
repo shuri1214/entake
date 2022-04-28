@@ -50,7 +50,6 @@ fastify.get("/", function(request, reply) {
 
 fastify.get("/setuser", function(request, reply) {
   let params = { seo: seo,"post":{}};
-  db.run(sql.delete);// clean obsoleted (unnecessary serialized)
   reply.view("/src/pages/user.hbs", params);
 });
 
@@ -60,7 +59,7 @@ fastify.get("/switch", function(request, reply) {
   reply.view("/src/pages/buttons.hbs", params);
 });
 
-fastify.get("/bgscene", function(request, reply) {
+fastify.get("/bgscene/:user", function(request, reply) {
   let params = { seo: seo};
   db.run(sql.deleteimed);// clean obsoleted (unnecessary serialized)
   reply.view("/src/pages/bgscene.hbs", params);
@@ -86,6 +85,15 @@ fastify.get("/nigiyaka", function(request, reply) {
 *
 * Accepts body data indicating the user choice
 */
+fastify.post("/setuser", function(request, reply) {
+  let params = { seo: seo ,"post": request.body};
+  db.serialize(() => {
+    var preins = db.prepare(sql.userinsert);
+    preins.run([request.body.username]);
+    preins.finalize();  
+  })
+  reply.view("/src/pages/buttons.hbs", params);
+});
 fastify.post("/switch", function(request, reply) {
   let params = { seo: seo ,"post": request.body};
   db.serialize(() => {
