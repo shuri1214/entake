@@ -56,7 +56,7 @@ fastify.get("/switch", function(request, reply) {
 
 fastify.get("/bgscene", function(request, reply) {
   let params = { seo: seo};
-  db.run(sql.delete);// clean obsoleted (unnecessary serialized)
+  db.run(sql.deleteimed);// clean obsoleted (unnecessary serialized)
   reply.view("/src/pages/bgscene.hbs", params);
 });
 
