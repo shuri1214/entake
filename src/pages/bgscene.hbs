@@ -47,11 +47,13 @@
             $.get(url,'code='+ key,null,'json')
               .done(function(ret,ts,jqXHR){
                   key = ret["code"];
-                  $('.tmp').text(key);
+                  $('.tmp').text(ts);
+              /*
                   $('i').attr('class',"fa fa-solid " + ret["icon"]);
                   $('i').fadeIn(2000,function(){
                     $('i').fadeOut(2000);
                   });
+                  */
                 }
               );
           },6000);

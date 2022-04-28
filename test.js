@@ -21,8 +21,10 @@ db.serialize(() => {
   db.serialize(() => {
 //    console.log(sql.geticon);
     var pre = db.prepare(sql.geticon);
-    pre.bind(["111"]);
-//    db.get(sql.geticon, (err, rows) => {
-//        console.log(JSON.stringify(rows));
-//    });
+    pre.bind("20220428162406",function(){
+      pre.get((err, rows) => {
+          console.log(rows);
+          console.log(JSON.stringify(rows));
+      });
+    });
   })
