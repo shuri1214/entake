@@ -51,7 +51,7 @@
           let url='https://entake.glitch.me/nigiyaka'
           $.get(url,'test=001',null,'json')
             .done(function(ret,ts,jqXHR){
-                $('.test') .text(ret["test"]);
+                $('i') .attr('class',"fa fa-solid " + ret["test"]);
                 $('i').fadeOut(3000);
                 $('i').fadeIn(6000);
               }

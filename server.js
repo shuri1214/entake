@@ -89,7 +89,7 @@ fastify.get("/nigiyaka", function(request, reply) {
   reply
     .code(200)
     .header("Content-Type","application/json; charset=utf-8")
-    .send({"test":"hoge"});
+    .send({"test":"fa-ghost"});
 });
 
 
