@@ -48,6 +48,12 @@ fastify.get("/", function(request, reply) {
   reply.view("/src/pages/index.hbs", params);
 });
 
+fastify.get("/setuser", function(request, reply) {
+  let params = { seo: seo,"post":{}};
+  db.run(sql.delete);// clean obsoleted (unnecessary serialized)
+  reply.view("/src/pages/buttons.hbs", params);
+});
+
 fastify.get("/switch", function(request, reply) {
   let params = { seo: seo,"post":{}};
   db.run(sql.delete);// clean obsoleted (unnecessary serialized)
@@ -61,7 +67,7 @@ fastify.get("/bgscene", function(request, reply) {
 });
 
 fastify.get("/nigiyaka", function(request, reply) {
-    db.serialize(() => {
+  db.serialize(() => {
     var pre = db.prepare(sql.geticon);
     pre.bind(request.query['code'],function(){
       pre.get((err, rows) => {
