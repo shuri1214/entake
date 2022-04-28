@@ -12,6 +12,7 @@ const fastify = require("fastify")({
 });
 
 // ADD FAVORITES ARRAY VARIABLE FROM TODO HERE
+const crypto = require("crypto");
 const sqlite3 = require("sqlite3");
 const db = new sqlite3.Database("./dbs/icons.db");
 const sql = require("./src/sql.json");
@@ -87,11 +88,11 @@ fastify.get("/nigiyaka", function(request, reply) {
 */
 fastify.post("/setuser", function(request, reply) {
   let params = { seo: seo ,"post": request.body};
-  db.serialize(() => {
-    var preins = db.prepare(sql.userinsert);
-    preins.run([request.body.username]);
-    preins.finalize();  
-  })
+  let url = crypto.createHash('sha512');
+  var pre = db.prepare(sql.userinsert);
+  pre.bind([request.body.username, "xxxx"], function(){
+    pre.run();
+  });
   reply.view("/src/pages/buttons.hbs", params);
 });
 fastify.post("/switch", function(request, reply) {

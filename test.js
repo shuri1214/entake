@@ -6,17 +6,8 @@ const sqlite3 = require("sqlite3");
 const db = new sqlite3.Database("./dbs/icons.db");
 const sql = require("./src/sql.json");
 
-/*
-db.serialize(() => {
-  db.get("select * from posted", (err, row) => {
-        if (err) {
-            console.error(err.message);
-        }
-        console.log("######");
-        console.log(`${row.name} : ${row.posttime}`);
-    });
-})
-*/
+const crypto = require("crypto");
+console.log(crypto.getHashes());
 
   db.serialize(() => {
 //    console.log(sql.geticon);
