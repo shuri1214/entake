@@ -4,6 +4,6 @@ node_modules
 icons.db
 .sqlite_history
 colors.json
-# seo.json
-# sql.json
-# test.js
+seo.json
+sql.json
+test.js
