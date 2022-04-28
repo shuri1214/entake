@@ -1,10 +1,14 @@
 # Hello Entake
+
 ## What's this
+
 カメラ背景機能を賑やかしに使う機能です
 
 ## How to Use
 
-1. [fot Live Viewer](https://entake.glitch.me/switch) に表示されているボタンを押します
+1. （配信者）あらかじめ配信ツールで [for Streamer](https://entake.glitch.me/bgscene) を取り込んでおきます。
+1. [for Live Viewer](https://entake.glitch.me/switch) に表示されているボタンを押します。
+1. 配信者の背景がボタンのアイコンで賑わいます。
 
 
 ## You built this with Glitch!
