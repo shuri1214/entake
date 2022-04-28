@@ -1,3 +1,7 @@
 .glitchdotcom.json
 .node-gyp
 node_modules
+icons.db
+.sqlite_history
+colors.json
+seo.json
