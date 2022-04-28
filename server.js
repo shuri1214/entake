@@ -51,7 +51,7 @@ fastify.get("/", function(request, reply) {
 fastify.get("/setuser", function(request, reply) {
   let params = { seo: seo,"post":{}};
   db.run(sql.delete);// clean obsoleted (unnecessary serialized)
-  reply.view("/src/pages/buttons.hbs", params);
+  reply.view("/src/pages/user.hbs", params);
 });
 
 fastify.get("/switch", function(request, reply) {
