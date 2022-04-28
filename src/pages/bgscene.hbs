@@ -41,17 +41,19 @@
     <script>
       $(document).ready(function(){
         $(function(){
+            let url='https://entake.glitch.me/nigiyaka';
+            let key='';
           setInterval(function(){
-          let url='https://entake.glitch.me/nigiyaka'
-          $.get(url,'test=001',null,'json')
-            .done(function(ret,ts,jqXHR){
-                $('i') .attr('class',"fa fa-solid " + ret["test"]);
-                $('i').delay(1000).fadeIn(3000);
-                $('i').delay(2000).fadeOut(6000);
-              }
-            );
-            
-          },3000);
+            $.get(url,'test=001',null,'json')
+              .done(function(ret,ts,jqXHR){
+                  key= ret["code"];
+                  $('i').attr('class',"fa fa-solid " + ret["test"]);
+                  $('i').fadeIn(2000,function(){
+                    $('i').fadeOut(2000);
+                  });
+                }
+              );
+          },6000);
         });
       });
     </script>
