@@ -15,7 +15,7 @@
           padding: 10px;
           color:#ffb47a;
           font-weight: bold;
-          font-size:60px;
+          font-size:120px;
           text-shadow:
             3px 3px 3px #eee, -3px -3px 3px #eee,
            -3px 3px 3px #eee,  3px -3px 3px #aaa,
@@ -46,8 +46,8 @@
           $.get(url,'test=001',null,'json')
             .done(function(ret,ts,jqXHR){
                 $('i') .attr('class',"fa fa-solid " + ret["test"]);
-                $('i').fadeOut(3000);
-                $('i').fadeIn(6000);
+                $('i').delay(1000).fadeIn(3000);
+                $('i').delay(2000).fadeOut(6000);
               }
             );
             
@@ -58,19 +58,45 @@
       
         <div class="grid-container fluid text-center">
           <div class="grid-x grid-padding-x icon">
-            <div class="cell small-6 medium-6 large-6 medium-cell-block-y">
-              <i class="fa fa-solid fa-feather"></i>
+            <div class="cell small-3 medium-3 large-3">
+              <i class=""></i>
             </div>
-            <div class="cell small-6 medium-6 large-6 medium-cell-block-y">
-              <i class="fa fa-solid fa-feather"></i>
+            <div class="cell small-3 medium-3 large-3">
+              <i class=""></i>
+            </div>
+            <div class="cell small-3 medium-3 large-3">
+              <i class=""></i>
+            </div>
+            <div class="cell small-3 medium-3 large-3">
+              <i class=""></i>
             </div>
           </div>
           <div class="grid-x grid-padding-x icon">
-            <div class="cell small-6 medium-6 large-6 medium-cell-block-y">
-              <i class="fa fa-solid fa-feather"></i>
+            <div class="cell small-3 medium-3 large-3">
+              <i class=""></i>
             </div>
-            <div class="cell small-6 medium-6 large-6 medium-cell-block-y">
-              <i class="fa fa-solid fa-feather"></i>
+            <div class="cell small-3 medium-3 large-3">
+              <i class=""></i>
+            </div>
+            <div class="cell small-3 medium-3 large-3">
+              <i class=""></i>
+            </div>
+            <div class="cell small-3 medium-3 large-3">
+              <i class=""></i>
+            </div>
+          </div>
+          <div class="grid-x grid-padding-x icon">
+            <div class="cell small-3 medium-3 large-3">
+              <i class=""></i>
+            </div>
+            <div class="cell small-3 medium-3 large-3">
+              <i class=""></i>
+            </div>
+            <div class="cell small-3 medium-3 large-3">
+              <i class=""></i>
+            </div>
+            <div class="cell small-3 medium-3 large-3">
+              <i class=""></i>
             </div>
           </div>
         </div>
