@@ -32,29 +32,28 @@
     <div class="grid-container">
       <form method="post">
       <div class="grid-x">
-        <div class="cell small-4 medium-4 large-4">
+        <div class="cell small-4 medium-4 large-4 small-offset-4 medium-offset-4 large-offset-4">
           登録。
+        </div>
+      </div>
+      <div class="grid-x">
+        <div class="cell small-4 medium-4 large-4 small-offset-4 medium-offset-4 large-offset-4 align-center">
+          
+          <input class="expanded" type="text" id="username" name="username">
+          <button type="submit" id="user" name="user" class="expanded primary button">
+            <i class="fa fa-solid fa-id-card"></i> 登録
+          </button>
         </div>
       </div>
       {{#if post}} 
       <div class="grid-x">
-        <div class="cell small-12 medium-12 large-12">
+        <div class="cell small-4 medium-4 large-4 small-offset-4 medium-offset-4 large-offset-4">
           ユーザー名：{{post.username}}<br>
           賑やしボタン：{{post.buttonpage}}<br>
           シーンパス：<span id="streamurl"></span>
         </div>
       </div>
       {{/if}}
-      <div class="grid-x">
-        <div class="cell small-8 medium-8 large-6">
-          <input type="text" id="username" name="username">
-        </div>
-        <div class="cell small-4 medium-4 large-6">
-          <button type="submit" id="user" name="user" class="radius bordered shadow primary button">
-            <i class="fa fa-solid fa-id-card"></i>登録
-          </button>
-        </div>
-      </div>
       </form>
     </div>
   </body>
