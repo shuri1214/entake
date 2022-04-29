@@ -16,6 +16,7 @@
         display: -webkit-flex;
         display: -moz-flex;
         display: flex;
+        display:none;
         flex-wrap: wrap;
         align-items: stretch;	
         width: 100%;
@@ -53,9 +54,11 @@
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script>
+      {{#if post}} 
       $(document).ready(function(){
         $(function(){
           
+                  $('dl').fadeIn(7000);
           let url='https://entake.glitch.me/getuser/{{post.username}}';
           setTimeout(function(){
             $.get(url,'',null,'json')
@@ -66,17 +69,19 @@
           },5000);
         });
       });
+      {{/if}}
     </script>
     <div class="grid-container">
       <form method="post">
+      {{#if get}}
       <div class="grid-x">
         <div class="cell small-4 medium-4 large-4 small-offset-4 medium-offset-4 large-offset-4">
           登録。
         </div>
       </div>
+        {{/if}}
       <div class="grid-x">
         <div class="cell small-4 medium-4 large-4 small-offset-4 medium-offset-4 large-offset-4 align-center">
-          
           <input class="expanded" type="text" id="username" name="username">
           <button type="submit" id="user" name="user" class="expanded primary button">
             <i class="fa fa-solid fa-id-card"></i> 登録
@@ -88,8 +93,8 @@
         <div class="cell small-4 medium-4 large-4 small-offset-4 medium-offset-4 large-offset-4">
           <dl class="userinfo">
             <dt class="userinfo">ユーザー名</dt><dd>{{post.username}}</dd>
-            <dt class="userinfo">賑やしボタン</dt><dd><a id="audiencepage" href="{{post.buttonpage}}" target="_blank">ページリンク</a></dd>
-            <dt class="userinfo">シーンパス</dt><dd><a id="streampage" target="_blank">ページリンク</a></dd>
+            <dt class="userinfo">賑やしボタン</dt><dd><a id="audiencepage" href="{{post.buttonpage}}" target="_blank">賑やかしページリンク</a></dd>
+            <dt class="userinfo">シーンパス</dt><dd><a id="streampage" target="_blank">シーンページリンク</a></dd>
           </dl>
         </div>
       </div>
