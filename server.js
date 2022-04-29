@@ -68,8 +68,8 @@ fastify.get("/bgscene/:hash", function(request, reply) {
 
 fastify.get("/nigiyaka/:hash", function(request, reply) {
   db.serialize(() => {
-    var pre = db.prepare(sql.geticon,request.params.hash);
-    pre.bind(request.query['code'],function(){
+    var pre = db.prepare(sql.geticon);
+    pre.bind([request.query['code'],request.params.hash],function(){
       pre.get((err, rows) => {
         reply
           .code(200)
@@ -78,6 +78,8 @@ fastify.get("/nigiyaka/:hash", function(request, reply) {
       });
     });
   })
+  
+  db.run(sql.delete);// clean obsoleted (unnecessary serialized)
 });
 
 fastify.get("/getuser/:user", function(request, reply) {
