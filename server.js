@@ -81,24 +81,20 @@ fastify.get("/nigiyaka", function(request, reply) {
 });
 
 fastify.get("/getuser/:user", function(request, reply) {
-  
   db.serialize(() => {
-    var pre = db.prepare(sql.userinfo);
-    pre.bind(request.query['code'],function(){
-      pre.get((err, rows) => {
+    var info = db.prepare(sql.userinfo);
+    info.bind(request.params.user,function(){
+      info.get((err, rows) => {
         reply
           .code(200)
           .header("Content-Type","application/json; charset=utf-8")
           .send(JSON.stringify(rows));
       });
     });
+    var upd = db.prepare(sql.userupd);
+    upd.run(request.params.user);
+    upd.finalize();
   })
-  let params = { seo: seo ,
-                'post': {
-                  'username':request.params.user,
-                  'streampage':seo.url+'/bgscene/'+request.params.user,
-                  'buttonpage':seo.url+'/switch/xxxx'
-                }};
 });
 
 
