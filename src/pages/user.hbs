@@ -81,10 +81,8 @@
       {{#if get}}
       <div class="grid-x">
         <div class="cell small-4 medium-4 large-4 small-offset-4 medium-offset-4 large-offset-4 align-center">
-          <input class="expanded" type="text" id="username" name="username">
-          <button type="submit" id="user" name="user" maxlength="15" pattern="^[a-zA-Z0-9]+$" required class="expanded primary button">
-            <i class="fa fa-solid fa-id-card"></i> 登録
-          </button>
+          <input class="expanded" type="text" id="username" name="username"　maxlength="15" pattern="^[a-zA-Z0-9]+$" placeholder="半角英数字15文字以内" required >
+          <input type="submit" id="user" name="user" value="登録" class="expanded primary button">
         </div>
       </div>
       {{/if}}
