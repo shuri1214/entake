@@ -45,12 +45,12 @@ if (seo.url === "glitch-default") {
 * Returns src/pages/index.hbs with data built into it
 */
 fastify.get("/", function(request, reply) {
-  let params = { seo: seo ,'get':{}};
+  let params = { seo: seo };
   reply.view("/src/pages/index.hbs", params);
 });
 
 fastify.get("/setuser", function(request, reply) {
-  let params = { seo: seo};
+  let params = { seo: seo,'get':{}};
   reply.view("/src/pages/user.hbs", params);
 });
 
