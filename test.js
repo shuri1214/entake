@@ -7,8 +7,13 @@ const db = new sqlite3.Database("./dbs/icons.db");
 const sql = require("./src/sql.json");
 
 const crypto = require("crypto");
-console.log(crypto.getHashes());
+//  let sha = crypto.createHash('sha512').update('text');
+  let sha = crypto.createHash('md5').update('text');
+  let hash = sha.digest('hex');
+console.log(hash);
+console.log();
 
+/*
   db.serialize(() => {
 //    console.log(sql.geticon);
     var pre = db.prepare(sql.geticon);
@@ -19,3 +24,4 @@ console.log(crypto.getHashes());
       });
     });
   })
+*/

@@ -95,14 +95,14 @@ fastify.post("/setuser", function(request, reply) {
                   'streampage':seo.url+'/bgscene/'+request.body.username,
                   'buttonpage':seo.url+'/switch/' + hash
                 }};
-  
   db.serialize(() => {
-    var pre = db.prepare(sql.userregid);
-    pre.bind([request.body.username, hash]);
-    pre.run();
+    var st = db.prepare(sql.userregid);
+    st.run([request.body.username, hash]);
+    st.finalize();
   });
     reply.view("/src/pages/buttons.hbs", params);
 });
+
 fastify.post("/switch", function(request, reply) {
   let params = { seo: seo ,"post": request.body};
   db.serialize(() => {
