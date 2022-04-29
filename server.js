@@ -87,13 +87,16 @@ fastify.get("/nigiyaka", function(request, reply) {
 * Accepts body data indicating the user choice
 */
 fastify.post("/setuser", function(request, reply) {
-  let params = { seo: seo ,"post": request.body};
+  let sha = crypto.createHash('sha512').update(request.body.username);
+  let hash = sha.digest('hex');
+  let params = { seo: seo ,
+                'post': {
+                  'username':request.body.username,
+                  'streampage':seo.url+'/bgscene/'+request.body.username,
+                  'buttonpage':seo.url+'/switch/' + hash
+                }};
   
   db.serialize(() => {
-    let sha = crypto.createHash('sha512');
-    sha.update(request.body.username);
-    let hash = sha.digest('hex');
-    
     var pre = db.prepare(sql.userinsert);
     pre.bind([request.body.username, hash]);
     pre.run();
