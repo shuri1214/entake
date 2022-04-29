@@ -120,7 +120,7 @@ fastify.post("/setuser", function(request, reply) {
     reply.view("/src/pages/user.hbs", params);
 });
 
-fastify.post("/switch", function(request, reply) {
+fastify.post("/switch/:user", function(request, reply) {
   let params = { seo: seo ,"post": request.body};
   db.serialize(() => {
     var preins = db.prepare(sql.insert);
