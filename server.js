@@ -62,7 +62,7 @@ fastify.get("/switch", function(request, reply) {
 
 fastify.get("/bgscene/:user", function(request, reply) {
   let params = { seo: seo};
-  db.run(sql.deleteimed);// clean obsoleted (unnecessary serialized)
+  db.run(sql.deleteuser);// clean obsoleted (unnecessary serialized)
   reply.view("/src/pages/bgscene.hbs", params);
 });
 
@@ -82,6 +82,23 @@ fastify.get("/nigiyaka", function(request, reply) {
 
 fastify.get("/getuser/:user", function(request, reply) {
   
+  db.serialize(() => {
+    var pre = db.prepare(sql.userinfo);
+    pre.bind(request.query['code'],function(){
+      pre.get((err, rows) => {
+        reply
+          .code(200)
+          .header("Content-Type","application/json; charset=utf-8")
+          .send(JSON.stringify(rows));
+      });
+    });
+  })
+  let params = { seo: seo ,
+                'post': {
+                  'username':request.params.user,
+                  'streampage':seo.url+'/bgscene/'+request.params.user,
+                  'buttonpage':seo.url+'/switch/xxxx'
+                }};
 });
 
 
