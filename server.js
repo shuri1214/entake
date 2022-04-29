@@ -88,10 +88,15 @@ fastify.get("/nigiyaka", function(request, reply) {
 */
 fastify.post("/setuser", function(request, reply) {
   let params = { seo: seo ,"post": request.body};
-  let url = crypto.createHash('sha512');
-  var pre = db.prepare(sql.userinsert);
-  pre.bind([request.body.username, "xxxx"], function(){
-    pre.run();
+  let sha = crypto.createHash('sha512');
+  sha.update(request.body.username);
+  
+  db.serialize(() => {
+
+    var pre = db.prepare(sql.userinsert);
+    pre.bind([request.body.username, "xxxx"], function(){
+      pre.run();
+    });
   });
   reply.view("/src/pages/buttons.hbs", params);
 });
