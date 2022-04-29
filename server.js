@@ -61,14 +61,14 @@ fastify.get("/switch/:user", function(request, reply) {
 });
 
 fastify.get("/bgscene/:hash", function(request, reply) {
-  let params = { seo: seo};
+  let params = { seo: seo,"hash":request.params.hash};
   db.run(sql.deleteuser,request.params.hash);// clean obsoleted (unnecessary serialized)
   reply.view("/src/pages/bgscene.hbs", params);
 });
 
-fastify.get("/nigiyaka", function(request, reply) {
+fastify.get("/nigiyaka/:hash", function(request, reply) {
   db.serialize(() => {
-    var pre = db.prepare(sql.geticon);
+    var pre = db.prepare(sql.geticon,request.params.hash);
     pre.bind(request.query['code'],function(){
       pre.get((err, rows) => {
         reply
