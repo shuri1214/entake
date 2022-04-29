@@ -55,11 +55,12 @@
     <script>
       $(document).ready(function(){
         $(function(){
+          
           let url='https://entake.glitch.me/getuser/{{post.username}}';
           setTimeout(function(){
             $.get(url,'',null,'json')
               .done(function(ret,ts,jqXHR){
-                  $('#streamurl').text('{{post.streambaseurl}}'+ ret["url"]);
+                  $('#streampage').attr('href','{{post.streambaseurl}}'+ ret["url"]);
                 }
               );
           },5000);
@@ -82,16 +83,16 @@
           </button>
         </div>
       </div>
+      {{#if post}} 
       <div class="grid-x">
         <div class="cell small-4 medium-4 large-4 small-offset-4 medium-offset-4 large-offset-4">
           <dl class="userinfo">
-            <dt class="userinfo">ユーザー名</dt><dd>aaaa{{post.username}}</dd>
-            <dt class="userinfo">賑やしボタン</dt><dd><a href="{{post.buttonpage}}">bbbb</a></dd>
-            <dt class="userinfo">シーンパス</dt><dd>xxxxx<span id="streamurl"></span></dd>
+            <dt class="userinfo">ユーザー名</dt><dd>{{post.username}}</dd>
+            <dt class="userinfo">賑やしボタン</dt><dd><a id="audiencepage" href="{{post.buttonpage}}" target="_blank">ページリンク</a></dd>
+            <dt class="userinfo">シーンパス</dt><dd><a id="streampage" target="_blank">ページリンク</a></dd>
           </dl>
         </div>
       </div>
-      {{#if post}} 
       {{/if}}
       </form>
     </div>
