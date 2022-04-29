@@ -18,16 +18,11 @@
     <script>
       $(document).ready(function(){
         $(function(){
-            let url='https://entake.glitch.me/getuser/'{{}};
-            let key='';
-          setInterval(function(){
-            $.get(url,'code='+ key,null,'json')
+          let url='https://entake.glitch.me/getuser/{{post.username}}'';
+          setTimeout(function(){
+            $.get(url,'',null,'json')
               .done(function(ret,ts,jqXHR){
-                  key = ret["code"];
-                  $('i').attr('class',"fa fa-solid " + ret["icon"]);
-                  $('i').fadeIn(1500,function(){
-                    $('i').fadeOut(1500);
-                  });
+                  $('#streamurl').text({{}} + ret["url"]);
                 }
               );
           },3000);

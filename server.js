@@ -60,9 +60,9 @@ fastify.get("/switch", function(request, reply) {
   reply.view("/src/pages/buttons.hbs", params);
 });
 
-fastify.get("/bgscene/:user", function(request, reply) {
+fastify.get("/bgscene/:hash", function(request, reply) {
   let params = { seo: seo};
-  db.run(sql.deleteuser,request.params.user);// clean obsoleted (unnecessary serialized)
+  db.run(sql.deleteuser,request.params.hash);// clean obsoleted (unnecessary serialized)
   
   reply.view("/src/pages/bgscene.hbs", params);
 });
@@ -96,6 +96,7 @@ fastify.get("/getuser/:user", function(request, reply) {
     upd.run(request.params.user);
     upd.finalize();
   })
+  db.close();
 });
 
 
