@@ -97,7 +97,7 @@ fastify.post("/setuser", function(request, reply) {
                 }};
   
   db.serialize(() => {
-    var pre = db.prepare(sql.userinsert);
+    var pre = db.prepare(sql.userregid);
     pre.bind([request.body.username, hash]);
     pre.run();
   });
