@@ -80,6 +80,10 @@ fastify.get("/nigiyaka", function(request, reply) {
   })
 });
 
+fastify.get("/getuser/:user", function(request, reply) {
+  
+});
+
 
 /**
 * Our POST route to handle and react to form submissions 
@@ -87,20 +91,20 @@ fastify.get("/nigiyaka", function(request, reply) {
 * Accepts body data indicating the user choice
 */
 fastify.post("/setuser", function(request, reply) {
-  let sha = crypto.createHash('md5').update(request.body.username);
-  let hash = sha.digest('hex');
   let params = { seo: seo ,
                 'post': {
                   'username':request.body.username,
                   'streampage':seo.url+'/bgscene/'+request.body.username,
-                  'buttonpage':seo.url+'/switch/' + hash
+                  'buttonpage':seo.url+'/switch/xxxx'
                 }};
   db.serialize(() => {
+    var sec = require('./secret.js');
+    var hash = crypto.createHash('md5').update(request.body.username + sec.item).digest('hex');
     var st = db.prepare(sql.userregid);
     st.run([request.body.username, hash]);
     st.finalize();
   });
-    reply.view("/src/pages/buttons.hbs", params);
+    reply.view("/src/pages/user.hbs", params);
 });
 
 fastify.post("/switch", function(request, reply) {

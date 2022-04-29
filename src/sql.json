@@ -3,5 +3,6 @@
   "geticon": "select name as icon,posttime as code from posted where posttime =(select min(posttime) from posted where posttime > ?);",
   "delete": "delete from posted where posttime < strftime('%Y%m%d%H%M%S')-180",
   "deleteimed": "delete from posted where posttime < strftime('%Y%m%d%H%M%S')-30",
-  "userregid":"replace into user (name,hash) values(?,?)"
+  "userregid":"replace into user (name,hash) values(?,?)",
+  "userinfo":"select name,hash from user where name = ?"
 }
