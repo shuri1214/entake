@@ -88,17 +88,17 @@ fastify.get("/nigiyaka", function(request, reply) {
 */
 fastify.post("/setuser", function(request, reply) {
   let params = { seo: seo ,"post": request.body};
-  let sha = crypto.createHash('sha512');
-  sha.update(request.body.username);
   
   db.serialize(() => {
-
+    let sha = crypto.createHash('sha512');
+    sha.update(request.body.username);
+    let hash = sha.digest('hex');
+    
     var pre = db.prepare(sql.userinsert);
-    pre.bind([request.body.username, "xxxx"], function(){
-      pre.run();
-    });
+    pre.bind([request.body.username, hash]);
+    pre.run();
   });
-  reply.view("/src/pages/buttons.hbs", params);
+    reply.view("/src/pages/buttons.hbs", params);
 });
 fastify.post("/switch", function(request, reply) {
   let params = { seo: seo ,"post": request.body};
