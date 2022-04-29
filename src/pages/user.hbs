@@ -10,7 +10,6 @@
     
     <!-- Compressed CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation.min.css" crossorigin="anonymous">
-
   </head>
   <body>
     <!-- jQuery -->
@@ -45,14 +44,16 @@
           </button>
         </div>
       </div>
-      {{#if post}} 
       <div class="grid-x">
         <div class="cell small-4 medium-4 large-4 small-offset-4 medium-offset-4 large-offset-4">
-          ユーザー名：{{post.username}}<br>
-          賑やしボタン：{{post.buttonpage}}<br>
-          シーンパス：<span id="streamurl"></span>
+          <ul class="userinfo" id="userinfo">
+            <li class="userinfo">ユーザー名：{{post.username}}</li>
+            <li class="userinfo">賑やしボタン：{{post.buttonpage}}</li>
+            <li class="userinfo">シーンパス：<span id="streamurl"></span></li>
+          </ul>
         </div>
       </div>
+      {{#if post}} 
       {{/if}}
       </form>
     </div>
