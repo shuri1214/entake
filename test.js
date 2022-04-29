@@ -8,10 +8,10 @@ const sql = require("./src/sql.json");
 
 const crypto = require("crypto");
 //  let sha = crypto.createHash('sha512').update('text');
-  let sha = crypto.createHash('md5').update('text');
+  let sha = crypto.createHash('md5').update('text' + 'hogeho');
   let hash = sha.digest('hex');
 console.log(hash);
-console.log();
+//console.log(crypto.getHashes());
 
 /*
   db.serialize(() => {

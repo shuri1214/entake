@@ -87,7 +87,7 @@ fastify.get("/nigiyaka", function(request, reply) {
 * Accepts body data indicating the user choice
 */
 fastify.post("/setuser", function(request, reply) {
-  let sha = crypto.createHash('sha512').update(request.body.username);
+  let sha = crypto.createHash('md5').update(request.body.username);
   let hash = sha.digest('hex');
   let params = { seo: seo ,
                 'post': {
