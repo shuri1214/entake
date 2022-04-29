@@ -109,10 +109,11 @@ fastify.post("/setuser", function(request, reply) {
   let params = { seo: seo ,
                 'post': {
                   'username':request.body.username,
-                  'buttonpage':seo.url+'/switch/'+request.body.username
+                  'buttonpage':seo.url+'/switch/'+request.body.username,
+                  'streambaseurl':seo.url+'/bgscene/'
                 }};
   db.serialize(() => {
-    var sec = require('./secret.js');
+    var sec = require('./src/secret.js');
     var hash = crypto.createHash('md5').update(request.body.username + sec.item).digest('hex');
     var st = db.prepare(sql.userregid);
     st.run([request.body.username, hash]);
@@ -126,7 +127,7 @@ fastify.post("/switch/:user", function(request, reply) {
   let params = { seo: seo ,"post": request.body};
   db.serialize(() => {
     var preins = db.prepare(sql.insert);
-    preins.run([request.body.icon]);
+    preins.run([request.body.icon,request.params.user]);
     preins.finalize();  
   })
   reply.view("/src/pages/buttons.hbs", params);

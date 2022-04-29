@@ -18,14 +18,14 @@
     <script>
       $(document).ready(function(){
         $(function(){
-          let url='https://entake.glitch.me/getuser/{{post.username}}'';
+          let url='https://entake.glitch.me/getuser/{{post.username}}';
           setTimeout(function(){
             $.get(url,'',null,'json')
               .done(function(ret,ts,jqXHR){
-                  $('#streamurl').text({{}} + ret["url"]);
+                  $('#streamurl').text('{{post.streambaseurl}}'+ ret["url"]);
                 }
               );
-          },3000);
+          },5000);
         });
       });
     </script>
