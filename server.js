@@ -50,12 +50,12 @@ fastify.get("/", function(request, reply) {
 });
 
 fastify.get("/setuser", function(request, reply) {
-  let params = { seo: seo,"post":{}};
+  let params = { seo: seo};
   reply.view("/src/pages/user.hbs", params);
 });
 
-fastify.get("/switch", function(request, reply) {
-  let params = { seo: seo,"post":{}};
+fastify.get("/switch/:user", function(request, reply) {
+  let params = { seo: seo};
   db.run(sql.delete);// clean obsoleted (unnecessary serialized)
   reply.view("/src/pages/buttons.hbs", params);
 });
@@ -63,7 +63,6 @@ fastify.get("/switch", function(request, reply) {
 fastify.get("/bgscene/:hash", function(request, reply) {
   let params = { seo: seo};
   db.run(sql.deleteuser,request.params.hash);// clean obsoleted (unnecessary serialized)
-  
   reply.view("/src/pages/bgscene.hbs", params);
 });
 
