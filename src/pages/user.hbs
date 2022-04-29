@@ -32,16 +32,16 @@
     <div class="grid-container">
       <form method="post">
       <div class="grid-x">
-        <div class="cell small-8 medium-8 large-6">
+        <div class="cell small-4 medium-4 large-4">
           登録。
         </div>
       </div>
       {{#if post}} 
       <div class="grid-x">
         <div class="cell small-12 medium-12 large-12">
-          {{post.username}}<br>
-          {{post.buttonpage}}<br>
-          <span id="streamurl"></span>
+          ユーザー名：{{post.username}}<br>
+          賑やしボタン：{{post.buttonpage}}<br>
+          シーンパス：<span id="streamurl"></span>
         </div>
       </div>
       {{/if}}
