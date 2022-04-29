@@ -15,10 +15,16 @@
 <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/js/foundation.min.js" crossorigin="anonymous"></script>
   </head>
   <body>
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <ul class="dropdown menu" data-dropdown-menu>
+          <li class="menu-text">エンタケ</li>
+        </ul>
+      </div>
+    </div>
     <div class="grid-container">
-      
-      <div class="grid-x ">
-        <div class="cell small-12 midium-12 large-12 text-center">
+      <div class="grid-x">
+        <div class="cell small-4 medium-4 large-4 small-offset-4 medium-offset-4 large-offset-4 text-center">
           <div class="card " style="width:240px;height:240px;margin-top:10px;">
             <div class="card-divider text-center">Last Post:  {{post.icon}}</div>
             <i class="fa fa-solid {{post.icon}}" style="font-size:150px;margin-top:10px;"></i>
@@ -28,22 +34,22 @@
       <form method="post">
       <div class="grid-x">
         <div class="cell small-4 medium-3 large-auto">
-          <button type="submit" name="icon" value="fa-leaf" class="radius bordered shadow primary button">
+          <button type="submit" name="icon" value="fa-leaf" class="expanded primary button">
             <i class="fa fa-solid fa-leaf"></i>葉
           </button>
         </div>
         <div class="cell small-4 medium-3 large-auto">
-          <button type="submit" name="icon" value="fa-star" class="radius bordered shadow primary button">
+          <button type="submit" name="icon" value="fa-star" class="expanded primary button">
             <i class="fa fa-solid fa-star"></i>星
           </button>
         </div>
         <div class="cell small-4 medium-3 large-auto">
-          <button type="submit" name="icon" value="fa-ghost" class="radius bordered shadow primary button">
+          <button type="submit" name="icon" value="fa-ghost" class="expanded primary button">
             <i class="fa fa-solid fa-ghost"></i>お化け
           </button>
         </div>
         <div class="cell small-4 medium-3 large-auto">
-          <button type="submit" name="icon" value="fa-arrow-up" class="radius bordered shadow primary button">
+          <button type="submit" name="icon" value="fa-arrow-up" class="expanded primary button">
             <i class="fa fa-solid fa-arrow-up"></i>アゲアゲ
           </button>
         </div>
