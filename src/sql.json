@@ -1,8 +1,8 @@
 {
-  "insert": "insert into posted (name,posttime,hash) values(?,strftime('%Y%m%d%H%M%S'),'xxx')",
-  "geticon": "select name as icon,posttime as code from posted where posttime =(select min(posttime) from posted where posttime > ?);",
+  "insert": "insert into posted (name,posttime,hash) select ?,strftime('%Y%m%d%H%M%S'),hash from user where name = ?;",
+  "geticon": "select name as icon,posttime as code from posted where posttime =(select min(posttime) from posted where posttime > ? and hash =?);",
   "delete": "delete from posted where posttime < strftime('%Y%m%d%H%M%S')-180",
-  "deleteuser": "delete from posted where posttime < strftime('%Y%m%d%H%M%S')-30",
+  "deleteuser": "delete from posted where hash = ?",
   "userregid":"replace into user (name,hash,inform) values(?,?,'0')",
   "userinfo":"select name,hash as url from user where inform='0' and name = ?",
   "userupd":"update user set inform = '1' where name = ?"

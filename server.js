@@ -108,8 +108,7 @@ fastify.post("/setuser", function(request, reply) {
   let params = { seo: seo ,
                 'post': {
                   'username':request.body.username,
-                  'streampage':seo.url+'/bgscene/'+request.body.username,
-                  'buttonpage':seo.url+'/switch/xxxx'
+                  'buttonpage':seo.url+'/switch/'+request.body.username
                 }};
   db.serialize(() => {
     var sec = require('./secret.js');
