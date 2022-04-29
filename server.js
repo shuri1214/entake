@@ -62,7 +62,8 @@ fastify.get("/switch", function(request, reply) {
 
 fastify.get("/bgscene/:user", function(request, reply) {
   let params = { seo: seo};
-  db.run(sql.deleteuser);// clean obsoleted (unnecessary serialized)
+  db.run(sql.deleteuser,request.params.user);// clean obsoleted (unnecessary serialized)
+  
   reply.view("/src/pages/bgscene.hbs", params);
 });
 
@@ -117,7 +118,8 @@ fastify.post("/setuser", function(request, reply) {
     st.run([request.body.username, hash]);
     st.finalize();
   });
-    reply.view("/src/pages/user.hbs", params);
+  db.close();
+  reply.view("/src/pages/user.hbs", params);
 });
 
 fastify.post("/switch/:user", function(request, reply) {
